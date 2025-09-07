@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: your-dockerhub-user/cloudcommerce-frontend:latest
+          image: cloudcommerce-frontend:latest
+          imagePullPolicy: Never  # Use local images
           ports:
             - containerPort: 80
           livenessProbe:

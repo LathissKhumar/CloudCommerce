@@ -8,7 +8,7 @@ param(
 )
 
 $PROJECT_NAME = "cloudcommerce"
-$REGISTRY = "your-registry.com"  # Change this to your Docker registry
+$REGISTRY = "local"  # Using local images for Docker Desktop Kubernetes
 $NAMESPACE = "default"
 
 function Write-Log {
@@ -44,21 +44,28 @@ function Test-Prerequisites {
 function Build-Images {
     Write-Log "Building Docker images..."
     
-    # Build backend
-    docker build -t "${REGISTRY}/${PROJECT_NAME}-backend:latest" ./backend
-    Write-Log "Backend image built"
-    
-    # Build frontend
-    docker build -t "${REGISTRY}/${PROJECT_NAME}-frontend:latest" ./frontend
-    Write-Log "Frontend image built"
+    if ($REGISTRY -eq "local") {
+        # Build images for local Kubernetes
+        docker build -t "${PROJECT_NAME}-backend:latest" ./backend
+        docker build -t "${PROJECT_NAME}-frontend:latest" ./frontend
+        Write-Log "Local images built for Docker Desktop Kubernetes"
+    } else {
+        # Build images for external registry
+        docker build -t "${REGISTRY}/${PROJECT_NAME}-backend:latest" ./backend
+        docker build -t "${REGISTRY}/${PROJECT_NAME}-frontend:latest" ./frontend
+        Write-Log "Images built for external registry"
+    }
 }
 
 function Push-Images {
-    Write-Log "Pushing images to registry..."
+    if ($REGISTRY -eq "local") {
+        Write-Log "Skipping image push for local deployment"
+        return
+    }
     
+    Write-Log "Pushing images to registry..."
     docker push "${REGISTRY}/${PROJECT_NAME}-backend:latest"
     docker push "${REGISTRY}/${PROJECT_NAME}-frontend:latest"
-    
     Write-Log "Images pushed successfully"
 }
 
