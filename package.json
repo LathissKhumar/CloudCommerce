@@ -1,0 +1,12 @@
+{
+  "name": "cloudcommerce",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "cd backend && npm start",
+    "build": "cd backend && npm install",
+    "install": "cd backend && npm install"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}

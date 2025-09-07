@@ -1,0 +1,10 @@
+{
+  "build": {
+    "builder": "@vercel/node"
+  },
+  "functions": {
+    "backend/index.js": {
+      "runtime": "@vercel/node@18.x"
+    }
+  }
+}

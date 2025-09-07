@@ -1,0 +1,13 @@
+version: 2
+
+build:
+  commands:
+    - cd backend && npm install
+    - cd backend && npm run build || true
+
+deploy:
+  startCommand: cd backend && npm start
+  healthcheckPath: /health
+  
+env:
+  NODE_ENV: production
