@@ -9,5 +9,5 @@ cmds = [
   "cd backend && npm ci --only=production"
 ]
 
-[start]
+[phases.start]
 cmd = "cd backend && npm start"
