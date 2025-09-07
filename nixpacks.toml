@@ -6,8 +6,7 @@ nixPkgs = ["nodejs_18", "npm"]
 
 [phases.build]
 cmds = [
-  "cd backend",
-  "npm ci --only=production"
+  "cd backend && npm ci --only=production"
 ]
 
 [start]
