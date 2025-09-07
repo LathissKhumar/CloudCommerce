@@ -1,0 +1,31 @@
+version: '3.9'
+services:
+  mongo:
+    image: mongo:6
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+  backend:
+    build: ./backend
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/cloudcommerce
+      - JWT_SECRET=${JWT_SECRET:-supersecret_jwt_key_change_me}
+      - NODE_ENV=production
+    depends_on:
+      - mongo
+    ports:
+      - "5000:5000"
+  frontend:
+    build: ./frontend
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+
+volumes:
+  mongo_data:
+
+
+

@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cloudcommerce-sa
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: cloudcommerce-role
+rules:
+- apiGroups: [""]
+  resources: ["pods", "services", "configmaps", "secrets"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["apps"]
+  resources: ["deployments", "replicasets"]
+  verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: cloudcommerce-rolebinding
+subjects:
+- kind: ServiceAccount
+  name: cloudcommerce-sa
+  namespace: default
+roleRef:
+  kind: Role
+  name: cloudcommerce-role
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cloudcommerce-config
+data:
+  NODE_ENV: "production"
+  CORS_ORIGIN: "*"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cloudcommerce-secrets
+type: Opaque
+data:
+  jwtSecret: c3VwZXJzZWNyZXRfand0X2tleV9jaGFuZ2VfbWU=  # base64 encoded
+  mongoUri: bW9uZ29kYjovL2Nsb3VkY29tbWVyY2UtbW9uZ286MjcwMTcvY2xvdWRjb21tZXJjZQ==  # base64 encoded
+

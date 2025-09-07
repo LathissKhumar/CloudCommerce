@@ -1,0 +1,15 @@
+node_modules
+npm-debug.log
+Dockerfile*
+.dockerignore
+.git
+.gitignore
+.github
+frontend/node_modules
+backend/node_modules
+frontend/build
+.env
+**/*.log
+**/.env
+**/.DS_Store
+

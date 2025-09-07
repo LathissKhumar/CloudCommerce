@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudcommerce-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cloudcommerce-backend
+  template:
+    metadata:
+      labels:
+        app: cloudcommerce-backend
+    spec:
+      containers:
+        - name: backend
+          image: your-dockerhub-user/cloudcommerce-backend:latest
+          ports:
+            - containerPort: 5000
+          envFrom:
+            - configMapRef:
+                name: cloudcommerce-config
+            - secretRef:
+                name: cloudcommerce-secrets
+          env:
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: cloudcommerce-secrets
+                  key: jwtSecret
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: 5000
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 2
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloudcommerce-backend
+spec:
+  selector:
+    app: cloudcommerce-backend
+  ports:
+    - port: 5000
+      targetPort: 5000
+
+
