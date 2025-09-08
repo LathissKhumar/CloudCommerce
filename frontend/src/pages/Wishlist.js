@@ -24,8 +24,8 @@ function Wishlist() {
         {
           id: '1',
           name: 'Wireless Bluetooth Headphones',
-          price: 79.99,
-          originalPrice: 99.99,
+          price: 4999,
+          originalPrice: 6999,
           image: 'https://via.placeholder.com/200x200',
           inStock: true,
           rating: 4.5,
@@ -34,7 +34,7 @@ function Wishlist() {
         {
           id: '2',
           name: 'Smart Fitness Watch',
-          price: 199.99,
+          price: 16999,
           image: 'https://via.placeholder.com/200x200',
           inStock: false,
           rating: 4.2,
@@ -137,9 +137,9 @@ function Wishlist() {
                     </div>
 
                     <div className="item-price">
-                      <span className="current-price">${item.price}</span>
+                      <span className="current-price">₹{item.price}</span>
                       {item.originalPrice && (
-                        <span className="original-price">${item.originalPrice}</span>
+                        <span className="original-price">₹{item.originalPrice}</span>
                       )}
                     </div>
 
@@ -177,7 +177,7 @@ function Wishlist() {
                 <div className="recommended-item">
                   <img src="https://via.placeholder.com/150x150" alt="Recommended" />
                   <h3>Related Product</h3>
-                  <div className="price">$49.99</div>
+                  <div className="price">₹4199</div>
                   <button className="add-to-cart-btn">Add to Cart</button>
                 </div>
                 {/* Add more recommended items */}

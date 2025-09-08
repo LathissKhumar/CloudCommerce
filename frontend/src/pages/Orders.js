@@ -28,11 +28,11 @@ function Orders() {
           orderNumber: 'CC-2024-001',
           date: '2024-01-15',
           status: 'delivered',
-          total: 89.99,
+          total: 6999,
           items: [
             {
               name: 'Wireless Headphones',
-              price: 79.99,
+              price: 6999,
               quantity: 1,
               image: 'https://via.placeholder.com/100x100'
             }
@@ -43,11 +43,11 @@ function Orders() {
           orderNumber: 'CC-2024-002',
           date: '2024-01-20',
           status: 'shipped',
-          total: 149.99,
+          total: 24999,
           items: [
             {
               name: 'Smart Watch',
-              price: 149.99,
+              price: 24999,
               quantity: 1,
               image: 'https://via.placeholder.com/100x100'
             }
@@ -148,7 +148,7 @@ function Orders() {
                     </span>
                   </div>
                   <div className="order-total">
-                    <strong>${order.total.toFixed(2)}</strong>
+                    <strong>₹{order.total.toFixed(2)}</strong>
                   </div>
                 </div>
 
@@ -159,7 +159,7 @@ function Orders() {
                       <div className="item-details">
                         <h4>{item.name}</h4>
                         <p>Quantity: {item.quantity}</p>
-                        <p>${item.price.toFixed(2)}</p>
+                        <p>₹{item.price.toFixed(2)}</p>
                       </div>
                     </div>
                   ))}

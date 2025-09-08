@@ -7,12 +7,12 @@ mongoose.connect('mongodb://localhost:27017/cloudcommerce', {
   useUnifiedTopology: true,
 });
 
-// Sample products with proper e-commerce data
+// Sample products with Indian rupee pricing
 const sampleProducts = [
   {
     name: "Premium Wireless Headphones",
-    price: 199.99,
-    originalPrice: 249.99,
+    price: 12999,
+    originalPrice: 16999,
     description: "High-quality wireless headphones with noise cancellation and 30-hour battery life. Perfect for music lovers and professionals.",
     image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop",
     category: "Electronics",
@@ -23,8 +23,8 @@ const sampleProducts = [
   },
   {
     name: "Smartphone Pro Max 256GB",
-    price: 999.99,
-    originalPrice: 1099.99,
+    price: 79999,
+    originalPrice: 89999,
     description: "Latest smartphone with advanced camera system, 256GB storage, and all-day battery life.",
     image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=300&fit=crop",
     category: "Electronics",
@@ -35,7 +35,7 @@ const sampleProducts = [
   },
   {
     name: "Gaming Mechanical Keyboard",
-    price: 129.99,
+    price: 8999,
     description: "RGB backlit mechanical keyboard with cherry MX switches, perfect for gaming and typing.",
     image: "https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400&h=300&fit=crop",
     category: "Gaming",
@@ -46,8 +46,8 @@ const sampleProducts = [
   },
   {
     name: "4K Webcam for Streaming",
-    price: 89.99,
-    originalPrice: 119.99,
+    price: 6999,
+    originalPrice: 8999,
     description: "Professional 4K webcam with auto-focus and built-in microphone for streaming and video calls.",
     image: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400&h=300&fit=crop",
     category: "Electronics",
@@ -58,8 +58,8 @@ const sampleProducts = [
   },
   {
     name: "Ergonomic Office Chair",
-    price: 299.99,
-    originalPrice: 399.99,
+    price: 19999,
+    originalPrice: 24999,
     description: "Premium ergonomic office chair with lumbar support and adjustable height. Perfect for long work sessions.",
     image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop",
     category: "Furniture",
@@ -70,7 +70,7 @@ const sampleProducts = [
   },
   {
     name: "Wireless Charging Pad",
-    price: 39.99,
+    price: 2499,
     description: "Fast wireless charging pad compatible with all Qi-enabled devices. Sleek design fits any desk.",
     image: "https://images.unsplash.com/photo-1609592913837-d23c0c76e8a8?w=400&h=300&fit=crop",
     category: "Electronics",
@@ -81,8 +81,8 @@ const sampleProducts = [
   },
   {
     name: "Bluetooth Sports Earbuds",
-    price: 79.99,
-    originalPrice: 99.99,
+    price: 4999,
+    originalPrice: 6999,
     description: "Waterproof Bluetooth earbuds with secure fit and premium sound quality for workouts.",
     image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400&h=300&fit=crop",
     category: "Electronics",
@@ -93,8 +93,8 @@ const sampleProducts = [
   },
   {
     name: "Smart Watch Series 5",
-    price: 349.99,
-    originalPrice: 399.99,
+    price: 24999,
+    originalPrice: 29999,
     description: "Advanced smartwatch with health monitoring, GPS, and 2-day battery life.",
     image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop",
     category: "Electronics",

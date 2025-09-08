@@ -27,7 +27,7 @@ function Home() {
     {
       id: 3,
       title: "Free Shipping",
-      subtitle: "On orders over $35. Fast, reliable delivery",
+      subtitle: "On orders over ₹2500. Fast, reliable delivery",
       image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=400&fit=crop",
       cta: "Learn More",
       link: "/products"
@@ -174,9 +174,9 @@ function Home() {
                         <span className="rating-count">(127)</span>
                       </div>
                       <div className="product-price">
-                        <span className="current-price">${product.price}</span>
+                        <span className="current-price">₹{product.price}</span>
                         {product.originalPrice && (
-                          <span className="original-price">${product.originalPrice}</span>
+                          <span className="original-price">₹{product.originalPrice}</span>
                         )}
                       </div>
                       <div className="product-shipping">
@@ -217,7 +217,7 @@ function Home() {
             <div className="service-item">
               <div className="service-icon">🚚</div>
               <h3>Free Shipping</h3>
-              <p>Free shipping on orders over $35</p>
+              <p>Free shipping on orders over ₹2500</p>
             </div>
             <div className="service-item">
               <div className="service-icon">↩️</div>

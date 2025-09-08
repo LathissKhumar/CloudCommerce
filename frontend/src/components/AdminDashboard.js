@@ -52,7 +52,7 @@ function AdminDashboard() {
   const stats = [
     { label: 'Total Products', value: '24', icon: <ProductsIcon />, color: '#2196F3' },
     { label: 'Total Orders', value: '156', icon: <OrdersIcon />, color: '#FF9800' },
-    { label: 'Monthly Revenue', value: '$12,450', icon: <TrendingIcon />, color: '#4CAF50' },
+    { label: 'Monthly Revenue', value: '₹10,35,450', icon: <TrendingIcon />, color: '#4CAF50' },
     { label: 'Active Users', value: '89', icon: <PeopleIcon />, color: '#9C27B0' }
   ];
 

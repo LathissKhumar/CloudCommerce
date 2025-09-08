@@ -143,23 +143,23 @@ function Search() {
               <div className="price-ranges">
                 <label className="filter-option">
                   <input type="radio" name="priceRange" />
-                  <span>Under $25</span>
+                  <span>Under ₹2000</span>
                 </label>
                 <label className="filter-option">
                   <input type="radio" name="priceRange" />
-                  <span>$25 to $50</span>
+                  <span>₹2000 to ₹5000</span>
                 </label>
                 <label className="filter-option">
                   <input type="radio" name="priceRange" />
-                  <span>$50 to $100</span>
+                  <span>₹5000 to ₹10000</span>
                 </label>
                 <label className="filter-option">
                   <input type="radio" name="priceRange" />
-                  <span>$100 to $200</span>
+                  <span>₹10000 to ₹20000</span>
                 </label>
                 <label className="filter-option">
                   <input type="radio" name="priceRange" />
-                  <span>$200 & Above</span>
+                  <span>₹20000 & Above</span>
                 </label>
               </div>
               

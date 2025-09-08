@@ -98,7 +98,7 @@ function Cart() {
                 </div>
 
                 <div className="item-price">
-                  ${item.price.toFixed(2)}
+                  ₹{item.price.toFixed(2)}
                 </div>
 
                 <div className="item-quantity">
@@ -131,14 +131,14 @@ function Cart() {
                 </div>
 
                 <div className="item-total">
-                  ${(item.price * item.quantity).toFixed(2)}
+                  ₹{(item.price * item.quantity).toFixed(2)}
                 </div>
               </div>
             ))}
 
             <div className="cart-subtotal">
               <span>Subtotal ({cartItems.length} items): </span>
-              <strong>${subtotal.toFixed(2)}</strong>
+              <strong>₹{subtotal.toFixed(2)}</strong>
             </div>
           </div>
 
@@ -151,27 +151,27 @@ function Cart() {
 
               <div className="summary-row">
                 <span>Subtotal ({cartItems.length} items):</span>
-                <span>${subtotal.toFixed(2)}</span>
+                <span>₹{subtotal.toFixed(2)}</span>
               </div>
 
               <div className="summary-row">
                 <span>Shipping & handling:</span>
-                <span>{shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`}</span>
+                <span>{shipping === 0 ? 'FREE' : `₹${shipping.toFixed(2)}`}</span>
               </div>
 
               <div className="summary-row">
                 <span>Total before tax:</span>
-                <span>${(subtotal + shipping).toFixed(2)}</span>
+                <span>₹{(subtotal + shipping).toFixed(2)}</span>
               </div>
 
               <div className="summary-row">
                 <span>Estimated tax:</span>
-                <span>${tax.toFixed(2)}</span>
+                <span>₹{tax.toFixed(2)}</span>
               </div>
 
               <div className="summary-total">
                 <span>Order total:</span>
-                <span>${total.toFixed(2)}</span>
+                <span>₹{total.toFixed(2)}</span>
               </div>
 
               <button onClick={handleCheckout} className="checkout-btn">
@@ -215,7 +215,7 @@ function Cart() {
             <div className="viewed-item">
               <img src="https://via.placeholder.com/150x150" alt="Recently viewed" />
               <p>Sample Product</p>
-              <span>$29.99</span>
+              <span>₹2499</span>
             </div>
             {/* Add more recently viewed items */}
           </div>
@@ -228,7 +228,7 @@ function Cart() {
             <div className="recommended-item">
               <img src="https://via.placeholder.com/150x150" alt="Recommended" />
               <p>Related Product</p>
-              <span>$19.99</span>
+              <span>₹1599</span>
               <button className="add-to-cart-btn">Add to Cart</button>
             </div>
             {/* Add more recommended items */}
