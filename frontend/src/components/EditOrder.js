@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function EditOrder({ orderId }) {
-  const [order, setOrder] = useState(null);
   const [status, setStatus] = useState('pending');
   const [success, setSuccess] = useState('');
   const [error, setError] = useState('');
@@ -11,12 +10,10 @@ function EditOrder({ orderId }) {
   useEffect(() => {
     axios.get(`/api/orders/${orderId}`)
       .then(res => {
-        setOrder(res.data);
         setStatus(res.data.status);
       })
       .catch(() => {
         setError('Failed to fetch order');
-        setOrder(null);
       })
       .finally(() => {
         setLoading(false);
