@@ -53,9 +53,16 @@ function Search() {
       }
 
       const response = await axios.get(`/api/products?${params.toString()}`);
-      setProducts(response.data);
+      // Ensure response.data is an array before setting state
+      if (Array.isArray(response.data)) {
+        setProducts(response.data);
+      } else {
+        console.error('Expected array but got:', typeof response.data);
+        setProducts([]);
+      }
     } catch (error) {
       console.error('Error searching products:', error);
+      setProducts([]);
     } finally {
       setLoading(false);
     }

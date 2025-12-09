@@ -18,7 +18,13 @@ function Orders() {
   const fetchOrders = async () => {
     try {
       const response = await axios.get('/api/orders');
-      setOrders(response.data);
+      // Ensure response.data is an array before setting state
+      if (Array.isArray(response.data)) {
+        setOrders(response.data);
+      } else {
+        console.error('Expected array but got:', typeof response.data);
+        setOrders([]);
+      }
     } catch (error) {
       console.error('Error fetching orders:', error);
       // Mock data for demonstration

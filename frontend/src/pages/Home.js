@@ -71,9 +71,16 @@ function Home() {
   const fetchFeaturedProducts = async () => {
     try {
       const response = await axios.get('/api/products?limit=8');
-      setFeaturedProducts(response.data.slice(0, 8));
+      // Ensure response.data is an array before setting state
+      if (Array.isArray(response.data)) {
+        setFeaturedProducts(response.data.slice(0, 8));
+      } else {
+        console.error('Expected array but got:', typeof response.data);
+        setFeaturedProducts([]);
+      }
     } catch (error) {
       console.error('Error fetching products:', error);
+      setFeaturedProducts([]);
     } finally {
       setLoading(false);
     }

@@ -25,10 +25,17 @@ function ProductDetail() {
       // Fetch related products
       if (response.data.category) {
         const relatedResponse = await axios.get(`/api/products?category=${response.data.category}&limit=4`);
-        setRelatedProducts(relatedResponse.data.filter(p => p._id !== id));
+        // Ensure response.data is an array before filtering
+        if (Array.isArray(relatedResponse.data)) {
+          setRelatedProducts(relatedResponse.data.filter(p => p._id !== id));
+        } else {
+          console.error('Expected array but got:', typeof relatedResponse.data);
+          setRelatedProducts([]);
+        }
       }
     } catch (error) {
       console.error('Error fetching product:', error);
+      setRelatedProducts([]);
     } finally {
       setLoading(false);
     }
