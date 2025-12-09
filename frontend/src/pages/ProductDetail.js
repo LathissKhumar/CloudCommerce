@@ -35,6 +35,7 @@ function ProductDetail() {
       }
     } catch (error) {
       console.error('Error fetching product:', error);
+      setRelatedProducts([]);
     } finally {
       setLoading(false);
     }
