@@ -15,7 +15,16 @@ function OrderList() {
 
   useEffect(() => {
     axios.get(`${API_BASE_URL}/api/orders`)
-      .then(res => setOrders(res.data))
+      .then(res => {
+        // Ensure response.data is an array before setting state
+        if (Array.isArray(res.data)) {
+          setOrders(res.data);
+        } else {
+          console.error('Expected array but got:', typeof res.data);
+          setOrders([]);
+          setError('Invalid response format');
+        }
+      })
       .catch(() => {
         setOrders([]);
         setError('Failed to load orders');

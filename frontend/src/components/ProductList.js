@@ -26,7 +26,16 @@ function ProductList() {
 
   useEffect(() => {
     axios.get(`${API_BASE_URL}/api/products`)
-      .then(res => setProducts(res.data))
+      .then(res => {
+        // Ensure response.data is an array before setting state
+        if (Array.isArray(res.data)) {
+          setProducts(res.data);
+        } else {
+          console.error('Expected array but got:', typeof res.data);
+          setProducts([]);
+          setError('Invalid response format');
+        }
+      })
       .catch(() => {
         setProducts([]);
         setError('Failed to load products');
