@@ -7,13 +7,14 @@ import CardActions from '@mui/material/CardActions';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
+import API_BASE_URL from '../config';
 
 function OrderList() {
   const [orders, setOrders] = useState([]);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/orders')
+    axios.get(`${API_BASE_URL}/api/orders`)
       .then(res => setOrders(res.data))
       .catch(() => {
         setOrders([]);
@@ -42,7 +43,7 @@ function OrderList() {
                 <CardActions>
                   <Button size="small" component={Link} to={`/edit-order/${order._id}`}>Edit</Button>
                   <Button size="small" color="error" onClick={async () => {
-                    await axios.delete(`http://localhost:5000/api/orders/${order._id}`);
+                    await axios.delete(`${API_BASE_URL}/api/orders/${order._id}`);
                     setOrders(orders.filter(o => o._id !== order._id));
                   }}>Delete</Button>
                 </CardActions>

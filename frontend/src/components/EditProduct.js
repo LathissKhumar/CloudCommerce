@@ -5,6 +5,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import API_BASE_URL from '../config';
 
 function EditProduct({ productId }) {
   const [product, setProduct] = useState(null);
@@ -15,7 +16,7 @@ function EditProduct({ productId }) {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/products/${productId}`)
+    axios.get(`${API_BASE_URL}/api/products/${productId}`)
       .then(res => {
         setProduct(res.data);
         setName(res.data.name);
@@ -31,7 +32,7 @@ function EditProduct({ productId }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/api/products/${productId}`, { name, price, description });
+      await axios.put(`${API_BASE_URL}/api/products/${productId}`, { name, price, description });
       setSuccess('Product updated!');
       setError('');
     } catch (err) {

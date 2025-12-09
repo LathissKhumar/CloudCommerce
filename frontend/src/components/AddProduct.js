@@ -27,6 +27,7 @@ import {
   Save as SaveIcon
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
+import API_BASE_URL from '../config';
 
 function AddProduct() {
   const [name, setName] = useState('');
@@ -75,7 +76,7 @@ function AddProduct() {
     }
 
     try {
-      await axios.post('http://localhost:5000/api/products', productData);
+      await axios.post(`${API_BASE_URL}/api/products`, productData);
       setSuccess('Product added successfully! Redirecting...');
       setTimeout(() => {
         navigate('/products');
