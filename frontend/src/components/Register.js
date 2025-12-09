@@ -22,6 +22,7 @@ import {
   PersonAdd as PersonAddIcon
 } from '@mui/icons-material';
 import { Link, useNavigate } from 'react-router-dom';
+import API_BASE_URL from '../config';
 
 function Register() {
   const [username, setUsername] = useState('');
@@ -68,7 +69,7 @@ function Register() {
     setLoading(true);
 
     try {
-      await axios.post('http://localhost:5000/api/auth/register', { username, email, password });
+      await axios.post(`${API_BASE_URL}/api/auth/register`, { username, email, password });
       setSuccess('Registration successful! Redirecting to login...');
       setTimeout(() => navigate('/login'), 2000);
     } catch (err) {

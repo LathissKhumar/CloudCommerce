@@ -11,6 +11,7 @@ import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import Chip from '@mui/material/Chip';
 import { Link } from 'react-router-dom';
+import API_BASE_URL from '../config';
 
 function ProductCard({ product }) {
   return (
@@ -88,7 +89,7 @@ function EcommerceProductList() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/products')
+    axios.get(`${API_BASE_URL}/api/products`)
       .then(res => {
         setProducts(res.data);
         setLoading(false);

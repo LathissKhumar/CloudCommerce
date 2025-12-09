@@ -17,6 +17,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { useCart } from '../contexts/CartContext';
+import API_BASE_URL from '../config';
 
 function ProductList() {
   const [products, setProducts] = useState([]);
@@ -24,7 +25,7 @@ function ProductList() {
   const { addToCart } = useCart();
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/products')
+    axios.get(`${API_BASE_URL}/api/products`)
       .then(res => setProducts(res.data))
       .catch(() => {
         setProducts([]);
@@ -131,7 +132,7 @@ function ProductList() {
                     onClick={async () => {
                       if (window.confirm('Are you sure you want to delete this product?')) {
                         try {
-                          await axios.delete(`http://localhost:5000/api/products/${product._id}`);
+                          await axios.delete(`${API_BASE_URL}/api/products/${product._id}`);
                           setProducts(products.filter(p => p._id !== product._id));
                         } catch (error) {
                           console.error('Error deleting product:', error);

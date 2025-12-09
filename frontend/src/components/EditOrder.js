@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import API_BASE_URL from '../config';
 
 function EditOrder({ orderId }) {
-  const [order, setOrder] = useState(null);
   const [status, setStatus] = useState('pending');
   const [success, setSuccess] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`/api/orders/${orderId}`)
+    axios.get(`${API_BASE_URL}/api/orders/${orderId}`)
       .then(res => {
-        setOrder(res.data);
         setStatus(res.data.status);
       })
       .catch(() => {
         setError('Failed to fetch order');
-        setOrder(null);
       })
       .finally(() => {
         setLoading(false);
@@ -26,7 +24,7 @@ function EditOrder({ orderId }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`/api/orders/${orderId}`, { status });
+      await axios.put(`${API_BASE_URL}/api/orders/${orderId}`, { status });
       setSuccess('Order updated!');
       setError('');
     } catch (err) {
